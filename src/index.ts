@@ -1,26 +1,15 @@
 import "reflect-metadata";
 import express from 'express';
-import { uptime } from 'node:process';
 import { pgDataSource } from "./db/postgres-datasource.js";
+import { healthRouter } from "./routes/health-route.js";
 
 const app = express();
-
-// Types
-const HttpStatus = {
-  OK: 200,
-} as const;
 
 // Middlewares
 app.use(express.json());
 
 // Routes
-app.get('/health', (_req, res, _next) => {
-  res.status(HttpStatus.OK).send({
-    status: 'OK',
-    uptimeInSeconds: Math.floor(uptime()),
-    currentTime: new Date().toLocaleString(),
-  });
-});
+app.use(healthRouter);
 
 // Bootstrap
 async function bootstrap() {

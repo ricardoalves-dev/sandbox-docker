@@ -58,9 +58,9 @@ As tarefas devem ser persistidas em um banco de dados relacional (PostgreSQL).
 Checklist para implementar o projeto de forma incremental, uma etapa por vez, até cobrir todos os requisitos acima.
 
 ### Etapa 1 — Estrutura inicial da aplicação
-- [ ] Inicializar o projeto Node.js (`package.json`, `tsconfig.json`)
-- [ ] Definir estrutura de pastas (ex.: `src/routes`, `src/controllers`, `src/db`)
-- [ ] Escolher e configurar framework HTTP (ex.: Express) e driver/ORM do PostgreSQL (ex.: `pg` ou Prisma)
+- [x] Inicializar o projeto Node.js (`package.json`, `tsconfig.json`)
+- [x] Definir estrutura de pastas (ex.: `src/routes`, `src/controllers`, `src/db`)
+- [x] Escolher e configurar framework HTTP (ex.: Express) e driver/ORM do PostgreSQL (ex.: `pg` ou Prisma)
 
 ### Etapa 2 — Modelagem de dados
 - [ ] Definir schema/tabela `tasks` (id, título, descrição, status, timestamps)
