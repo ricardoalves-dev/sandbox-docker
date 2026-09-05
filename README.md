@@ -111,6 +111,26 @@ Checklist para implementar o projeto de forma incremental, uma etapa por vez, at
 
 ---
 
+## Skills disponíveis no repositório
+
+Este repositório inclui skills do Claude Code em `.claude/skills/` para apoiar o fluxo de trabalho durante a implementação do projeto.
+
+### `update-pending-task`
+
+**Para que serve:** atua como um validador de progresso. Ela verifica a **próxima etapa pendente** do roadmap acima, confere se os commits e o estado atual do repositório atendem **integralmente** aos requisitos daquela etapa e, somente nesse caso, atualiza o checklist deste `README.md` marcando os itens como concluídos (`- [x]`). Caso algum requisito esteja incompleto, ela não altera o checklist e retorna um relatório detalhado do que falta.
+
+Ela não implementa código, não corrige Dockerfile/compose, não cria migrations nem instala dependências — sua única responsabilidade é auditar e, quando aplicável, atualizar o checklist.
+
+**Como usar:** invoque a skill pelo nome no Claude Code, por exemplo:
+
+```text
+/update-pending-task
+```
+
+ou peça em linguagem natural, como "verifica se a etapa atual está concluída".
+
+---
+
 Quando terminar, compartilhe o link do repositório que farei a revisão ponto a ponto, indicando o que foi bem aplicado e o que pode melhorar.
 
 Bom desenvolvimento! 🚀
