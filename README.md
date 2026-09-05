@@ -51,6 +51,66 @@ As tarefas devem ser persistidas em um banco de dados relacional (PostgreSQL).
 - O repositório deve conter um **`README.md`** com instruções claras de como executar o projeto
 - Nenhuma credencial ou secret deve estar versionada no repositório
 
+---
+
+## Roadmap de Implementação
+
+Checklist para implementar o projeto de forma incremental, uma etapa por vez, até cobrir todos os requisitos acima.
+
+### Etapa 1 — Estrutura inicial da aplicação
+- [ ] Inicializar o projeto Node.js (`package.json`, `tsconfig.json`)
+- [ ] Definir estrutura de pastas (ex.: `src/routes`, `src/controllers`, `src/db`)
+- [ ] Escolher e configurar framework HTTP (ex.: Express) e driver/ORM do PostgreSQL (ex.: `pg` ou Prisma)
+
+### Etapa 2 — Modelagem de dados
+- [ ] Definir schema/tabela `tasks` (id, título, descrição, status, timestamps)
+- [ ] Criar script/migration de criação da tabela
+- [ ] Configurar conexão com PostgreSQL via variáveis de ambiente
+
+### Etapa 3 — Endpoints da API
+- [ ] Implementar `GET /health` (healthcheck da aplicação)
+- [ ] Implementar `GET /tasks` (listar tarefas)
+- [ ] Implementar `POST /tasks` (criar tarefa)
+- [ ] Implementar `PUT /tasks/:id` (atualizar tarefa)
+- [ ] Implementar `DELETE /tasks/:id` (remover tarefa)
+- [ ] Validar entradas e tratar erros (404, 400, etc.)
+
+### Etapa 4 — Dockerfile da aplicação
+- [ ] Criar `Dockerfile` com **multi-stage build** (estágio de build separado do runtime)
+- [ ] Usar imagem final **slim/alpine**
+- [ ] Configurar **usuário não-root** para rodar o processo
+- [ ] Criar `.dockerignore` (node_modules, .git, .env, etc.)
+- [ ] Ordenar instruções do Dockerfile para **maximizar cache de layers** (copiar `package.json` antes do código-fonte)
+
+### Etapa 5 — Variáveis de ambiente e secrets
+- [ ] Criar arquivo `.env.example` documentando as variáveis necessárias
+- [ ] Garantir que `.env` está no `.gitignore` (nenhuma credencial versionada)
+
+### Etapa 6 — Docker Compose: banco de dados
+- [ ] Adicionar serviço PostgreSQL usando variáveis do `.env`
+- [ ] Configurar **named volume** para persistência dos dados
+- [ ] Configurar **healthcheck** do banco de dados
+- [ ] Garantir que o PostgreSQL **não** exponha porta para o host
+
+### Etapa 7 — Docker Compose: aplicação e rede
+- [ ] Adicionar serviço da aplicação usando o Dockerfile criado
+- [ ] Configurar `depends_on` com `condition: service_healthy` apontando para o banco
+- [ ] Criar **rede customizada** e conectar os serviços a ela
+- [ ] Expor apenas a porta estritamente necessária da aplicação para o host
+
+### Etapa 8 — Validação end-to-end
+- [ ] Subir o projeto com `docker compose up` (comando único)
+- [ ] Testar todos os endpoints (`/health`, `/tasks` CRUD) contra o container
+- [ ] Confirmar que dados persistem após `docker compose down` (sem `-v`)
+- [ ] Confirmar que o processo da aplicação não roda como root (`docker exec ... whoami`)
+- [ ] Confirmar que o PostgreSQL não é acessível diretamente pelo host
+
+### Etapa 9 — Documentação final
+- [ ] Atualizar `README.md` com instruções claras de execução (pré-requisitos, `.env`, comando de subida, exemplos de chamadas aos endpoints)
+- [ ] Revisar o repositório para garantir ausência de secrets versionados
+
+---
+
 Quando terminar, compartilhe o link do repositório que farei a revisão ponto a ponto, indicando o que foi bem aplicado e o que pode melhorar.
 
 Bom desenvolvimento! 🚀

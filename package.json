@@ -1,0 +1,31 @@
+{
+  "name": "sandbox-docker",
+  "version": "1.0.0",
+  "description": "Uma API REST simples de gerenciamento de tarefas, totalmente containerizada com Docker. O foco **não é a complexidade da aplicação em si**, mas sim a **qualidade da configuração Docker** ao redor dela.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardoalves-dev/sandbox-docker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardoalves-dev/sandbox-docker/issues"
+  },
+  "homepage": "https://github.com/ricardoalves-dev/sandbox-docker#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
