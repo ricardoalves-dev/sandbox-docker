@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch ./src/index.ts"
+    "dev": "tsx watch ./src/index.ts",
+    "docker:postgres": "docker run -d -p 5432:5432 --env-file .env -v dados-sandbox-dodcker:/var/lib/postgresql postgres:alpine"
   },
   "repository": {
     "type": "git",
